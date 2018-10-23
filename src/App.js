@@ -25,7 +25,7 @@ export default class App extends Component<Props> {
       imageSource: source,
     });
   }
-
+  
   render() {
     const { imageSource } = this.state;
     return (
