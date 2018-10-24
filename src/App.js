@@ -1,20 +1,34 @@
 
 import React, { Component } from 'react';
 import {
-  StyleSheet, Text, View,
+  StyleSheet, TextInput, View, Text,
 } from 'react-native';
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
+      text: '',
     };
   }
 
+  changeText(text) {
+    this.setState({
+      text,
+    });
+  }
+
   render() {
+    const { text } = this.state;
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Hello World!</Text>
+        <TextInput
+          style={styles.text}
+          placeholder="Enter the name of your favorite movie"
+          onChangeText={input => this.changeText(input)}
+          value={text}
+        />
+        <Text>{`Title: ${text}`}</Text>
       </View>
     );
   }
