@@ -1,20 +1,34 @@
 
 import React, { Component } from 'react';
 import {
-  StyleSheet, Text, View,
+  StyleSheet, Text, View, Button,
 } from 'react-native';
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
+      text: '...',
+      textColor: 'red',
     };
   }
 
+  changeTitleAndColor() {
+    const { textColor } = this.state;
+    this.setState({
+      text: 'Lorand',
+      textColor: textColor === 'red' ? 'blue' : 'red',
+    });
+  }
+
   render() {
+    const { text, textColor } = this.state;
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Hello World!</Text>
+        <Text style={[styles.text, { color: textColor }]}>
+          {`Welcome ${text} to React native!`}
+        </Text>
+        <Button title="press me" onPress={() => this.changeTitleAndColor()} />
       </View>
     );
   }
