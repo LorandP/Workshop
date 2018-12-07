@@ -5,14 +5,12 @@ import {
 } from 'react-native';
 import restApi from './restApi';
 import images from './images';
-import Welcome from './Welcome';
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
       data: [],
-      splashScreenFinished: false,
     };
   }
 
@@ -42,35 +40,16 @@ export default class App extends Component {
     return item.id.toString();
   }
 
-  splashScreenFinish = () => {
-    this.setState({
-      splashScreenFinished: true,
-    });
-  }
-
   render() {
-    const { data, splashScreenFinished } = this.state;
-    console.log('data -- ', data);
+    const { data } = this.state;
     return (
       <View style={styles.container}>
-        {
-          !splashScreenFinished
-          && (
-          <Welcome
-            onSplashscreenFinish={() => this.splashScreenFinish()}
-          />)
-        }
-        {
-          data.length !== 0
-          && splashScreenFinished
-          && (
-            <FlatList
-              data={data}
-              style={{ marginTop: 50 }}
-              keyExtractor={this.keyExtractor}
-              renderItem={item => this.renderItem(item.item)}
-            />)
-        }
+        <FlatList
+          data={data}
+          style={{ marginTop: 50 }}
+          keyExtractor={this.keyExtractor}
+          renderItem={item => this.renderItem(item.item)}
+        />
       </View>
     );
   }
