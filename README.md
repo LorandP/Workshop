@@ -11,3 +11,8 @@ In order to get up and running with the project follow the instructions bellow
 
 In order to install all the necessary tools, make sure you have npm installed on your system.
 To check this run the following command: npm -v
+
+## Installation
+
+Intall local dependencyes by running the following command from the root directory of the project:
+**npm install**
